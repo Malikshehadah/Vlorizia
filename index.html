@@ -14,12 +14,15 @@
       --primary-color: #d63384; /* وردي أكثر قوة */
       --secondary-color: #be4bdb; /* أرجواني متوسط */
       --accent-color: #ff85a2; /* وردي خوخي فاتح */
+      --whatsapp-color: #25d366; /* لون واتساب الأخضر */
+      --whatsapp-dark: #128c7e; /* لون واتساب الأخضر الغامق */
       --light-color: #fff0f6; /* وردي فاتح جداً للخلفية */
       --dark-color: #9d4edd; /* بنفسجي غامق */
       --menu-color: #c2255c; /* لون مميز للمنيو مختلف عن باقي الألوان */
       --text-color: #5a4a5a;
       --gradient-1: linear-gradient(135deg, #ff85a2 0%, #d63384 100%);
       --gradient-2: linear-gradient(135deg, #d63384 0%, #be4bdb 100%);
+      --whatsapp-gradient: linear-gradient(135deg, #25d366 0%, #128c7e 100%); /* تدرج واتساب */
       --menu-gradient: linear-gradient(135deg, #c2255c 0%, #9d4edd 100%);
       --border-radius: 12px;
       --box-shadow: 0 8px 20px rgba(214, 51, 132, 0.15);
@@ -287,128 +290,6 @@
       transform: translateX(-50%);
     }
 
-    /* الأشكال المتحركة */
-    .floating-shapes {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    
-    .shape {
-      position: absolute;
-      opacity: 0.6;
-    }
-    
-    /* شكل الفرجار الهندسي */
-    .compass {
-      width: 60px;
-      height: 60px;
-      background: var(--gradient-1);
-      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-      animation: float 8s infinite ease-in-out;
-    }
-    
-    .compass:after {
-      content: '';
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background: white;
-      top: 10px;
-      left: 15px;
-      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    }
-    
-    /* شكل الهدية */
-    .gift {
-      width: 70px;
-      height: 70px;
-      background: var(--gradient-2);
-      border-radius: 10px;
-      animation: float 10s infinite ease-in-out reverse;
-    }
-    
-    .gift:before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 20px;
-      background: var(--accent-color);
-      top: 25px;
-      left: 0;
-    }
-    
-    .gift:after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 100%;
-      background: var(--accent-color);
-      top: 0;
-      left: 25px;
-    }
-    
-    /* شكل الفراشة */
-    .butterfly {
-      width: 50px;
-      height: 50px;
-      animation: fly 15s infinite linear;
-    }
-    
-    .butterfly:before, .butterfly:after {
-      content: '';
-      position: absolute;
-      width: 30px;
-      height: 40px;
-      background: var(--gradient-1);
-      border-radius: 50%;
-    }
-    
-    .butterfly:before {
-      top: 5px;
-      left: 0;
-      transform: rotate(45deg);
-    }
-    
-    .butterfly:after {
-      top: 5px;
-      right: 0;
-      transform: rotate(-45deg);
-    }
-    
-    /* الرسوم المتحركة */
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-20px) rotate(5deg);
-      }
-    }
-    
-    @keyframes fly {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-      25% {
-        transform: translate(100px, 50px) rotate(90deg);
-      }
-      50% {
-        transform: translate(50px, 100px) rotate(180deg);
-      }
-      75% {
-        transform: translate(-50px, 50px) rotate(270deg);
-      }
-      100% {
-        transform: translate(0, 0) rotate(360deg);
-      }
-    }
-
     /* About Section */
     .about-content {
       display: flex;
@@ -617,7 +498,7 @@
     }
 
     .whatsapp {
-      color: #25d366;
+      color: var(--whatsapp-color);
     }
 
     .social-card h3 {
@@ -646,6 +527,18 @@
       border-radius: 30px;
       background-color: rgba(214, 51, 132, 0.1);
       border: 1px solid rgba(214, 51, 132, 0.2);
+    }
+
+    .social-card.whatsapp-card .social-link {
+      color: var(--whatsapp-color);
+      background-color: rgba(37, 211, 102, 0.1);
+      border: 1px solid rgba(37, 211, 102, 0.2);
+    }
+
+    .social-card.whatsapp-card .social-link:hover {
+      color: white;
+      background-color: var(--whatsapp-color);
+      border-color: var(--whatsapp-color);
     }
 
     .social-link:hover {
@@ -777,34 +670,34 @@
       color: #d8bdd5;
     }
 
-    /* Floating WhatsApp */
+    /* Floating WhatsApp - بلون واتساب الأصلي */
     .floating-wa {
       position: fixed;
       bottom: 35px;
       left: 35px;
-      background: var(--gradient-1);
+      background: var(--whatsapp-gradient);
       width: 70px;
       height: 70px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 30px rgba(214, 51, 132, 0.5);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
       z-index: 1000;
       transition: var(--transition);
-      animation: pulse 2s infinite;
+      animation: pulse-whatsapp 2s infinite;
       border: 2px solid white;
     }
 
-    @keyframes pulse {
+    @keyframes pulse-whatsapp {
       0% {
-        box-shadow: 0 0 0 0 rgba(214, 51, 132, 0.8);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
       }
       70% {
-        box-shadow: 0 0 0 20px rgba(214, 51, 132, 0);
+        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
       }
       100% {
-        box-shadow: 0 0 0 0 rgba(214, 51, 132, 0);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
       }
     }
 
@@ -815,7 +708,8 @@
 
     .floating-wa:hover {
       transform: scale(1.15) rotate(15deg);
-      box-shadow: 0 10px 35px rgba(214, 51, 132, 0.7);
+      box-shadow: 0 10px 35px rgba(37, 211, 102, 0.7);
+      background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
     }
 
     .floating-wa i {
@@ -859,10 +753,6 @@
       
       body[dir="rtl"] .floating-wa {
         right: 25px;
-      }
-      
-      .shape {
-        display: none; /* إخفاء الأشكال المتحركة في الشاشات الصغيرة */
       }
     }
 
@@ -912,14 +802,6 @@
 
   <!-- Header/Hero -->
   <header>
-    <div class="floating-shapes">
-      <div class="shape compass" style="top: 20%; left: 10%;"></div>
-      <div class="shape gift" style="top: 60%; left: 85%;"></div>
-      <div class="shape butterfly" style="top: 30%; left: 80%;"></div>
-      <div class="shape compass" style="top: 70%; left: 15%; transform: scale(0.8);"></div>
-      <div class="shape gift" style="top: 15%; left: 70%; transform: scale(0.7);"></div>
-      <div class="shape butterfly" style="top: 80%; left: 75%; transform: scale(0.6);"></div>
-    </div>
     <div class="container hero">
       <h1 class="lang-ar">فيلورزيا للأعمال اليدوية التعليمية</h1>
       <h1 class="lang-en">Vlorizia for Educational Handicrafts</h1>
@@ -936,11 +818,6 @@
 
   <!-- About Section -->
   <section id="about" class="about">
-    <div class="floating-shapes">
-      <div class="shape compass" style="top: 10%; left: 5%;"></div>
-      <div class="shape gift" style="top: 20%; left: 90%;"></div>
-      <div class="shape butterfly" style="top: 80%; left: 10%;"></div>
-    </div>
     <div class="container">
       <h2 class="section-title lang-ar">من نحن</h2>
       <h2 class="section-title lang-en">About Us</h2>
@@ -968,11 +845,6 @@
 
   <!-- Products Section -->
   <section id="products" class="products">
-    <div class="floating-shapes">
-      <div class="shape gift" style="top: 15%; left: 8%;"></div>
-      <div class="shape compass" style="top: 85%; left: 90%;"></div>
-      <div class="shape butterfly" style="top: 40%; left: 5%;"></div>
-    </div>
     <div class="container">
       <h2 class="section-title lang-ar">منتجاتنا وأعمالنا</h2>
       <h2 class="section-title lang-en">Our Products & Works</h2>
@@ -1019,11 +891,6 @@
 
   <!-- Gallery Section -->
   <section id="gallery" class="gallery">
-    <div class="floating-shapes">
-      <div class="shape compass" style="top: 10%; left: 90%;"></div>
-      <div class="shape butterfly" style="top: 75%; left: 5%;"></div>
-      <div class="shape gift" style="top: 30%; left: 3%;"></div>
-    </div>
     <div class="container">
       <h2 class="section-title lang-ar">معرض أعمالنا</h2>
       <h2 class="section-title lang-en">Our Works Gallery</h2>
@@ -1052,11 +919,6 @@
 
   <!-- Social Media Section -->
   <section id="social" class="social-section">
-    <div class="floating-shapes">
-      <div class="shape butterfly" style="top: 20%; left: 90%;"></div>
-      <div class="shape gift" style="top: 70%; left: 5%;"></div>
-      <div class="shape compass" style="top: 85%; left: 85%;"></div>
-    </div>
     <div class="container">
       <h2 class="section-title lang-ar">تواصل معنا عبر السوشال ميديا</h2>
       <h2 class="section-title lang-en">Connect With Us on Social Media</h2>
@@ -1106,7 +968,7 @@
             <i class="fas fa-arrow-right"></i>
           </a>
         </div>
-        <div class="social-card">
+        <div class="social-card whatsapp-card">
           <i class="fab fa-whatsapp social-icon whatsapp"></i>
           <h3 class="lang-ar">واتساب</h3>
           <h3 class="lang-en">WhatsApp</h3>
@@ -1162,7 +1024,7 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp -->
+  <!-- Floating WhatsApp - بلون واتساب الأصلي -->
   <a href="https://wa.me/966500000000" class="floating-wa" target="_blank" title="تواصل معنا عبر واتساب">
     <i class="fab fa-whatsapp"></i>
   </a>
@@ -1220,46 +1082,6 @@
           }
         });
       });
-      
-      // إنشاء أشكال متحركة عشوائية
-      function createFloatingShapes() {
-        const shapesContainer = document.querySelector('.floating-shapes');
-        if (!shapesContainer) return;
-        
-        const shapes = ['compass', 'gift', 'butterfly'];
-        const colors = ['#d63384', '#be4bdb', '#ff85a2', '#9d4edd'];
-        
-        // إضافة المزيد من الأشكال
-        for (let i = 0; i < 5; i++) {
-          const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
-          const shape = document.createElement('div');
-          shape.className = `shape ${shapeType}`;
-          
-          // تموضع عشوائي
-          const top = Math.random() * 90;
-          const left = Math.random() * 90;
-          
-          // حجم عشوائي
-          const size = 0.5 + Math.random() * 0.8;
-          
-          // لون عشوائي
-          const color = colors[Math.floor(Math.random() * colors.length)];
-          
-          shape.style.top = `${top}%`;
-          shape.style.left = `${left}%`;
-          shape.style.transform = `scale(${size})`;
-          shape.style.background = color;
-          
-          // سرعة عشوائية للرسوم المتحركة
-          const duration = 8 + Math.random() * 12;
-          shape.style.animationDuration = `${duration}s`;
-          
-          shapesContainer.appendChild(shape);
-        }
-      }
-      
-      // إنشاء الأشكال عند تحميل الصفحة
-      createFloatingShapes();
     });
   </script>
 </body>
