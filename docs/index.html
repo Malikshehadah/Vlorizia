@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vlorizia | فيلورزيا للأعمال اليدوية التعليمية</title>
+  <meta name="description" content="موقع يعرض الأعمال اليدوية والأنشطة التعليمية وتنسيقات الهدايا لطلاب المدارس.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #d63384; /* وردي أكثر قوة */
+      --secondary-color: #be4bdb; /* أرجواني متوسط */
+      --accent-color: #ff85a2; /* وردي خوخي فاتح */
+      --light-color: #fff0f6; /* وردي فاتح جداً للخلفية */
+      --dark-color: #9d4edd; /* بنفسجي غامق */
+      --menu-color: #c2255c; /* لون مميز للمنيو مختلف عن باقي الألوان */
+      --text-color: #5a4a5a;
+      --gradient-1: linear-gradient(135deg, #ff85a2 0%, #d63384 100%);
+      --gradient-2: linear-gradient(135deg, #d63384 0%, #be4bdb 100%);
+      --menu-gradient: linear-gradient(135deg, #c2255c 0%, #9d4edd 100%);
+      --border-radius: 12px;
+      --box-shadow: 0 8px 20px rgba(214, 51, 132, 0.15);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--light-color);
+      transition: var(--transition);
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    body[dir="ltr"] {
+      font-family: 'Poppins', sans-serif;
+      direction: ltr;
+    }
+
+    body[dir="ltr"] .product-card,
+    body[dir="ltr"] .social-card {
+      text-align: left;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation - تصميم منيو مميز */
+    nav {
+      background: var(--menu-gradient);
+      color: white;
+      padding: 1.2rem 0;
+      box-shadow: 0 4px 20px rgba(194, 37, 92, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background-color: rgba(194, 37, 92, 0.95);
+      border-bottom: 3px solid var(--accent-color);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo i {
+      color: var(--accent-color);
+      font-size: 2.2rem;
+    }
+
+    .logo span {
+      color: white;
+      font-weight: 300;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      padding: 0.6rem 1.5rem;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+      font-size: 1.05rem;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateX(-100%);
+      transition: var(--transition);
+      z-index: -1;
+      border-radius: 30px;
+    }
+
+    .nav-links a:hover::before {
+      transform: translateX(0);
+    }
+
+    .nav-links a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .lang-switch {
+      background-color: rgba(255, 255, 255, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+      backdrop-filter: blur(5px);
+      font-size: 1rem;
+    }
+
+    .lang-switch:hover {
+      background-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Header */
+    header {
+      background: var(--gradient-2), url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 7rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 50%, rgba(255, 133, 162, 0.4) 0%, rgba(214, 51, 132, 0.6) 100%);
+      z-index: 0;
+    }
+
+    .hero {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .tagline {
+      font-size: 1.4rem;
+      margin-bottom: 3rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background-color: white;
+      color: var(--primary-color);
+      padding: 1.2rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(214, 51, 132, 0.4);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.7s;
+      z-index: -1;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(214, 51, 132, 0.5);
+    }
+
+    .cta-button:hover::before {
+      transform: translateX(100%);
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      color: var(--dark-color);
+      font-size: 2.5rem;
+      position: relative;
+      font-weight: 700;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 5px;
+      background: var(--gradient-1);
+      border-radius: 3px;
+    }
+
+    body[dir="ltr"] .section-title:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* الأشكال المتحركة */
+    .floating-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .shape {
+      position: absolute;
+      opacity: 0.6;
+    }
+    
+    /* شكل الفرجار الهندسي */
+    .compass {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-1);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      animation: float 8s infinite ease-in-out;
+    }
+    
+    .compass:after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: white;
+      top: 10px;
+      left: 15px;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    
+    /* شكل الهدية */
+    .gift {
+      width: 70px;
+      height: 70px;
+      background: var(--gradient-2);
+      border-radius: 10px;
+      animation: float 10s infinite ease-in-out reverse;
+    }
+    
+    .gift:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      background: var(--accent-color);
+      top: 25px;
+      left: 0;
+    }
+    
+    .gift:after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 100%;
+      background: var(--accent-color);
+      top: 0;
+      left: 25px;
+    }
+    
+    /* شكل الفراشة */
+    .butterfly {
+      width: 50px;
+      height: 50px;
+      animation: fly 15s infinite linear;
+    }
+    
+    .butterfly:before, .butterfly:after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 40px;
+      background: var(--gradient-1);
+      border-radius: 50%;
+    }
+    
+    .butterfly:before {
+      top: 5px;
+      left: 0;
+      transform: rotate(45deg);
+    }
+    
+    .butterfly:after {
+      top: 5px;
+      right: 0;
+      transform: rotate(-45deg);
+    }
+    
+    /* الرسوم المتحركة */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+    
+    @keyframes fly {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(100px, 50px) rotate(90deg);
+      }
+      50% {
+        transform: translate(50px, 100px) rotate(180deg);
+      }
+      75% {
+        transform: translate(-50px, 50px) rotate(270deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(360deg);
+      }
+    }
+
+    /* About Section */
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-text p {
+      margin-bottom: 1.8rem;
+      font-size: 1.15rem;
+      line-height: 1.9;
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      position: relative;
+      border: 3px solid var(--accent-color);
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(214, 51, 132, 0.1), rgba(190, 75, 219, 0.1));
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .about-image:hover img {
+      transform: scale(1.08);
+    }
+
+    /* Products Section */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      text-align: right;
+      border: 2px solid rgba(214, 51, 132, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: var(--gradient-1);
+    }
+
+    body[dir="ltr"] .product-card {
+      text-align: left;
+    }
+
+    .product-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px rgba(214, 51, 132, 0.2);
+      border-color: rgba(214, 51, 132, 0.3);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .product-card:hover .product-img {
+      transform: scale(1.08);
+    }
+
+    .product-info {
+      padding: 2rem;
+    }
+
+    .product-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark-color);
+      font-weight: 700;
+    }
+
+    .product-desc {
+      color: #7a6a7a;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    /* Social Media Section */
+    .social-section {
+      background-color: #fef8fc;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d63384' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .social-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      text-align: right;
+      border: 2px solid rgba(214, 51, 132, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: var(--gradient-1);
+    }
+
+    body[dir="ltr"] .social-card {
+      text-align: left;
+    }
+
+    .social-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(214, 51, 132, 0.2);
+      border-color: rgba(214, 51, 132, 0.3);
+    }
+
+    .social-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .social-card:hover .social-icon {
+      transform: scale(1.15) rotate(5deg);
+    }
+
+    .facebook {
+      color: #1877f2;
+    }
+
+    .telegram {
+      color: #0088cc;
+    }
+
+    .tiktok {
+      color: #000000;
+    }
+
+    .whatsapp {
+      color: #25d366;
+    }
+
+    .social-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark-color);
+      font-weight: 700;
+    }
+
+    .social-card p {
+      color: #7a6a7a;
+      margin-bottom: 1.8rem;
+      line-height: 1.8;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 1rem;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 700;
+      transition: var(--transition);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      background-color: rgba(214, 51, 132, 0.1);
+      border: 1px solid rgba(214, 51, 132, 0.2);
+    }
+
+    .social-link:hover {
+      color: white;
+      background-color: var(--primary-color);
+      gap: 1.2rem;
+      border-color: var(--primary-color);
+    }
+
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .gallery-item {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      height: 280px;
+      position: relative;
+      box-shadow: var(--box-shadow);
+      border: 2px solid rgba(214, 51, 132, 0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.12);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 60%, rgba(214, 51, 132, 0.3));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--dark-color) 0%, #7b2cbf 100%);
+      color: white;
+      padding: 4.5rem 0 2.5rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 2.5rem;
+      text-align: right;
+    }
+
+    body[dir="ltr"] .footer-column {
+      text-align: left;
+    }
+
+    .footer-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.8rem;
+      color: var(--accent-color);
+      font-weight: 700;
+    }
+
+    .footer-column p {
+      color: #e8d4e5;
+      line-height: 1.9;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-links i {
+      color: var(--accent-color);
+      width: 24px;
+      font-size: 1.1rem;
+    }
+
+    .footer-links a {
+      color: #e8d4e5;
+      text-decoration: none;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-color);
+      padding-right: 8px;
+    }
+
+    body[dir="ltr"] .footer-links a:hover {
+      padding-right: 0;
+      padding-left: 8px;
+    }
+
+    .copyright {
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 1rem;
+      color: #d8bdd5;
+    }
+
+    /* Floating WhatsApp */
+    .floating-wa {
+      position: fixed;
+      bottom: 35px;
+      left: 35px;
+      background: var(--gradient-1);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 30px rgba(214, 51, 132, 0.5);
+      z-index: 1000;
+      transition: var(--transition);
+      animation: pulse 2s infinite;
+      border: 2px solid white;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(214, 51, 132, 0.8);
+      }
+      70% {
+        box-shadow: 0 0 0 20px rgba(214, 51, 132, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(214, 51, 132, 0);
+      }
+    }
+
+    body[dir="rtl"] .floating-wa {
+      left: auto;
+      right: 35px;
+    }
+
+    .floating-wa:hover {
+      transform: scale(1.15) rotate(15deg);
+      box-shadow: 0 10px 35px rgba(214, 51, 132, 0.7);
+    }
+
+    .floating-wa i {
+      color: white;
+      font-size: 2.5rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .about-content {
+        flex-direction: column;
+        gap: 3rem;
+      }
+      
+      .hero {
+        padding: 0 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      section {
+        padding: 4rem 0;
+      }
+      
+      .floating-wa {
+        width: 60px;
+        height: 60px;
+        bottom: 25px;
+        left: 25px;
+      }
+      
+      body[dir="rtl"] .floating-wa {
+        right: 25px;
+      }
+      
+      .shape {
+        display: none; /* إخفاء الأشكال المتحركة في الشاشات الصغيرة */
+      }
+    }
+
+    /* Language-specific styles */
+    .lang-ar {
+      display: block;
+    }
+    
+    .lang-en {
+      display: none;
+    }
+    
+    body[dir="ltr"] .lang-ar {
+      display: none;
+    }
+    
+    body[dir="ltr"] .lang-en {
+      display: block;
+    }
+  </style>
+</head>
+<body dir="rtl">
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <i class="fas fa-palette"></i>
+        Vlor<span>izia</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about" class="lang-ar">من نحن</a>
+        <a href="#about" class="lang-en">About</a>
+        <a href="#products" class="lang-ar">منتجاتنا</a>
+        <a href="#products" class="lang-en">Our Products</a>
+        <a href="#gallery" class="lang-ar">معرض الأعمال</a>
+        <a href="#gallery" class="lang-en">Gallery</a>
+        <a href="#social" class="lang-ar">تواصل معنا</a>
+        <a href="#social" class="lang-en">Contact Us</a>
+        <button class="lang-switch" id="lang-switch">
+          <i class="fas fa-language"></i>
+          <span class="lang-ar">English</span>
+          <span class="lang-en">العربية</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header/Hero -->
+  <header>
+    <div class="floating-shapes">
+      <div class="shape compass" style="top: 20%; left: 10%;"></div>
+      <div class="shape gift" style="top: 60%; left: 85%;"></div>
+      <div class="shape butterfly" style="top: 30%; left: 80%;"></div>
+      <div class="shape compass" style="top: 70%; left: 15%; transform: scale(0.8);"></div>
+      <div class="shape gift" style="top: 15%; left: 70%; transform: scale(0.7);"></div>
+      <div class="shape butterfly" style="top: 80%; left: 75%; transform: scale(0.6);"></div>
+    </div>
+    <div class="container hero">
+      <h1 class="lang-ar">فيلورزيا للأعمال اليدوية التعليمية</h1>
+      <h1 class="lang-en">Vlorizia for Educational Handicrafts</h1>
+      <p class="tagline lang-ar">نبتكر أدوات تعليمية وأنشطة مميزة لمساعدة الطلاب والمعلمين على تحقيق أقصى استفادة من العملية التعليمية</p>
+      <p class="tagline lang-en">We create unique educational tools and activities to help students and teachers maximize the educational process</p>
+      <a href="#products" class="cta-button lang-ar">
+        <i class="fas fa-gift"></i> استكشف منتجاتنا
+      </a>
+      <a href="#products" class="cta-button lang-en">
+        <i class="fas fa-gift"></i> Explore Our Products
+      </a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="floating-shapes">
+      <div class="shape compass" style="top: 10%; left: 5%;"></div>
+      <div class="shape gift" style="top: 20%; left: 90%;"></div>
+      <div class="shape butterfly" style="top: 80%; left: 10%;"></div>
+    </div>
+    <div class="container">
+      <h2 class="section-title lang-ar">من نحن</h2>
+      <h2 class="section-title lang-en">About Us</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p class="lang-ar">
+            <strong>فيلورزيا</strong> هي منصة مخصصة للأعمال اليدوية التعليمية التي تعمل كأدوات تعليمية مبتكرة لطلاب المدارس. نقدم مجموعة متنوعة من المنتجات تشمل المجسمات التعليمية، اللوحات التفاعلية، الأنشطة غير المنهجية، بالإضافة إلى تنسيقات هدايا مبتكرة.
+          </p>
+          <p class="lang-ar">
+            نؤمن بأن التعلم يجب أن يكون تجربة ممتعة وتفاعلية، لذلك نركز على تصميم منتجات تعزز الإبداع وتنمي المهارات العملية لدى الطلاب.
+          </p>
+          <p class="lang-en">
+            <strong>Vlorizia</strong> is a platform dedicated to educational handicrafts that serve as innovative teaching tools for school students. We offer a variety of products including educational models, interactive boards, extracurricular activities, as well as innovative gift arrangements.
+          </p>
+          <p class="lang-en">
+            We believe that learning should be a fun and interactive experience, which is why we focus on designing products that enhance creativity and develop students' practical skills.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1524178239883-269a632bb546?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="منتجات فيلورزيا التعليمية">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products">
+    <div class="floating-shapes">
+      <div class="shape gift" style="top: 15%; left: 8%;"></div>
+      <div class="shape compass" style="top: 85%; left: 90%;"></div>
+      <div class="shape butterfly" style="top: 40%; left: 5%;"></div>
+    </div>
+    <div class="container">
+      <h2 class="section-title lang-ar">منتجاتنا وأعمالنا</h2>
+      <h2 class="section-title lang-en">Our Products & Works</h2>
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="مجسمات تعليمية" class="product-img">
+          <div class="product-info">
+            <h3 class="product-title lang-ar">مجسمات تعليمية تفاعلية</h3>
+            <h3 class="product-title lang-en">Interactive Educational Models</h3>
+            <p class="product-desc lang-ar">مجسمات ثلاثية الأبعاد تساعد في شرح المفاهيم العلمية والرياضية بشكل مرئي وملموس.</p>
+            <p class="product-desc lang-en">3D models that help explain scientific and mathematical concepts visually and tangibly.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="لوحات تعليمية" class="product-img">
+          <div class="product-info">
+            <h3 class="product-title lang-ar">لوحات تعليمية متنوعة</h3>
+            <h3 class="product-title lang-en">Various Educational Boards</h3>
+            <p class="product-desc lang-ar">لوحات تعليمية تفاعلية تغطي مختلف المواد الدراسية بأسلوب جذاب ومبتكر.</p>
+            <p class="product-desc lang-en">Interactive educational boards covering various subjects in an engaging and innovative style.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="أنشطة غير منهجية" class="product-img">
+          <div class="product-info">
+            <h3 class="product-title lang-ar">أنشطة غير منهجية</h3>
+            <h3 class="product-title lang-en">Extracurricular Activities</h3>
+            <p class="product-desc lang-ar">أنشطة يدوية وإبداعية تعزز مهارات التفكير وحل المشكلات خارج إطار المنهج الدراسي.</p>
+            <p class="product-desc lang-en">Hands-on and creative activities that enhance thinking and problem-solving skills outside the curriculum.</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="تنسيقات هدايا" class="product-img">
+          <div class="product-info">
+            <h3 class="product-title lang-ar">تنسيقات هدايا مبتكرة</h3>
+            <h3 class="product-title lang-en">Innovative Gift Arrangements</h3>
+            <p class="product-desc lang-ar">تصميم هدايا تعليمية مميزة للمعلمين والطلاب بمناسبات مختلفة.</p>
+            <p class="product-desc lang-en">Designing distinctive educational gifts for teachers and students on various occasions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery">
+    <div class="floating-shapes">
+      <div class="shape compass" style="top: 10%; left: 90%;"></div>
+      <div class="shape butterfly" style="top: 75%; left: 5%;"></div>
+      <div class="shape gift" style="top: 30%; left: 3%;"></div>
+    </div>
+    <div class="container">
+      <h2 class="section-title lang-ar">معرض أعمالنا</h2>
+      <h2 class="section-title lang-en">Our Works Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="عمل يدوي تعليمي 1">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="عمل يدوي تعليمي 2">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="عمل يدوي تعليمي 3">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="عمل يدوي تعليمي 4">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="عمل يدوي تعليمي 5">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="عمل يدوي تعليمي 6">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media Section -->
+  <section id="social" class="social-section">
+    <div class="floating-shapes">
+      <div class="shape butterfly" style="top: 20%; left: 90%;"></div>
+      <div class="shape gift" style="top: 70%; left: 5%;"></div>
+      <div class="shape compass" style="top: 85%; left: 85%;"></div>
+    </div>
+    <div class="container">
+      <h2 class="section-title lang-ar">تواصل معنا عبر السوشال ميديا</h2>
+      <h2 class="section-title lang-en">Connect With Us on Social Media</h2>
+      <div class="social-grid">
+        <div class="social-card">
+          <i class="fab fa-facebook social-icon facebook"></i>
+          <h3 class="lang-ar">فيسبوك</h3>
+          <h3 class="lang-en">Facebook</h3>
+          <p class="lang-ar">تابعنا على فيسبوك لمشاهدة أحدث أعمالنا وأنشطتنا</p>
+          <p class="lang-en">Follow us on Facebook to see our latest works and activities</p>
+          <a href="https://facebook.com" target="_blank" class="social-link lang-ar">
+            <span>زور صفحتنا</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" class="social-link lang-en">
+            <span>Visit Our Page</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="social-card">
+          <i class="fab fa-telegram social-icon telegram"></i>
+          <h3 class="lang-ar">تيليجرام</h3>
+          <h3 class="lang-en">Telegram</h3>
+          <p class="lang-ar">انضم لقناتنا على تيليجرام للحصول على آخر التحديثات والعروض</p>
+          <p class="lang-en">Join our Telegram channel to get the latest updates and offers</p>
+          <a href="https://telegram.org" target="_blank" class="social-link lang-ar">
+            <span>انضم للقناة</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+          <a href="https://telegram.org" target="_blank" class="social-link lang-en">
+            <span>Join Channel</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="social-card">
+          <i class="fab fa-tiktok social-icon tiktok"></i>
+          <h3 class="lang-ar">تيك توك</h3>
+          <h3 class="lang-en">TikTok</h3>
+          <p class="lang-ar">شاهد فيديوهات تعليمية قصيرة وممتعة على تيك توك</p>
+          <p class="lang-en">Watch short and fun educational videos on TikTok</p>
+          <a href="https://tiktok.com" target="_blank" class="social-link lang-ar">
+            <span>تابعنا على تيك توك</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+          <a href="https://tiktok.com" target="_blank" class="social-link lang-en">
+            <span>Follow Us on TikTok</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="social-card">
+          <i class="fab fa-whatsapp social-icon whatsapp"></i>
+          <h3 class="lang-ar">واتساب</h3>
+          <h3 class="lang-en">WhatsApp</h3>
+          <p class="lang-ar">تواصل معنا مباشرة على واتساب للاستفسارات والطلبات</p>
+          <p class="lang-en">Contact us directly on WhatsApp for inquiries and orders</p>
+          <a href="https://wa.me/966500000000" target="_blank" class="social-link lang-ar">
+            <span>+966 50 000 0000</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+          <a href="https://wa.me/966500000000" target="_blank" class="social-link lang-en">
+            <span>+966 50 000 0000</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3 class="footer-title lang-ar">فيلورزيا</h3>
+          <h3 class="footer-title lang-en">Vlorizia</h3>
+          <p class="lang-ar">منصة متخصصة في الأعمال اليدوية التعليمية والأدوات التفاعلية لطلاب المدارس.</p>
+          <p class="lang-en">A platform specialized in educational handicrafts and interactive tools for school students.</p>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title lang-ar">روابط سريعة</h3>
+          <h3 class="footer-title lang-en">Quick Links</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-chevron-left"></i><a href="#about" class="lang-ar">من نحن</a><a href="#about" class="lang-en">About Us</a></li>
+            <li><i class="fas fa-chevron-left"></i><a href="#products" class="lang-ar">منتجاتنا</a><a href="#products" class="lang-en">Our Products</a></li>
+            <li><i class="fas fa-chevron-left"></i><a href="#gallery" class="lang-ar">معرض الأعمال</a><a href="#gallery" class="lang-en">Gallery</a></li>
+            <li><i class="fas fa-chevron-left"></i><a href="#social" class="lang-ar">تواصل معنا</a><a href="#social" class="lang-en">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 class="footer-title lang-ar">وسائل التواصل</h3>
+          <h3 class="footer-title lang-en">Contact Methods</h3>
+          <ul class="footer-links">
+            <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/966500000000" target="_blank">+966 50 000 0000</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:info@vlorizia.com">info@vlorizia.com</a></li>
+            <li><i class="fas fa-globe"></i> <a href="https://vlorizia.com" target="_blank">www.vlorizia.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p class="lang-ar">جميع الحقوق محفوظة &copy; Vlorizia.com 2025</p>
+        <p class="lang-en">All rights reserved &copy; Vlorizia.com 2025</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/966500000000" class="floating-wa" target="_blank" title="تواصل معنا عبر واتساب">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const langSwitch = document.getElementById('lang-switch');
+      const body = document.body;
+      
+      // التحقق من تفضيلات اللغة المخزنة
+      const savedLang = localStorage.getItem('vlorizia-lang');
+      if (savedLang === 'en') {
+        switchToEnglish();
+      }
+      
+      // تبديل اللغة عند النقر على الزر
+      langSwitch.addEventListener('click', function() {
+        if (body.getAttribute('dir') === 'rtl') {
+          switchToEnglish();
+          localStorage.setItem('vlorizia-lang', 'en');
+        } else {
+          switchToArabic();
+          localStorage.setItem('vlorizia-lang', 'ar');
+        }
+      });
+      
+      function switchToEnglish() {
+        body.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        langSwitch.querySelector('.lang-ar').style.display = 'none';
+        langSwitch.querySelector('.lang-en').style.display = 'inline';
+      }
+      
+      function switchToArabic() {
+        body.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'ar');
+        langSwitch.querySelector('.lang-ar').style.display = 'inline';
+        langSwitch.querySelector('.lang-en').style.display = 'none';
+      }
+      
+      // تأثير التمرير السلس للروابط الداخلية
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // إنشاء أشكال متحركة عشوائية
+      function createFloatingShapes() {
+        const shapesContainer = document.querySelector('.floating-shapes');
+        if (!shapesContainer) return;
+        
+        const shapes = ['compass', 'gift', 'butterfly'];
+        const colors = ['#d63384', '#be4bdb', '#ff85a2', '#9d4edd'];
+        
+        // إضافة المزيد من الأشكال
+        for (let i = 0; i < 5; i++) {
+          const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+          const shape = document.createElement('div');
+          shape.className = `shape ${shapeType}`;
+          
+          // تموضع عشوائي
+          const top = Math.random() * 90;
+          const left = Math.random() * 90;
+          
+          // حجم عشوائي
+          const size = 0.5 + Math.random() * 0.8;
+          
+          // لون عشوائي
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          
+          shape.style.top = `${top}%`;
+          shape.style.left = `${left}%`;
+          shape.style.transform = `scale(${size})`;
+          shape.style.background = color;
+          
+          // سرعة عشوائية للرسوم المتحركة
+          const duration = 8 + Math.random() * 12;
+          shape.style.animationDuration = `${duration}s`;
+          
+          shapesContainer.appendChild(shape);
+        }
+      }
+      
+      // إنشاء الأشكال عند تحميل الصفحة
+      createFloatingShapes();
+    });
+  </script>
+</body>
+</html>
